@@ -4,8 +4,8 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
-  const { user, setUser } = useContext(UserContext);
+export default function LogoutUser({ showLogout, setShowLogout }) {
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -20,14 +20,14 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Welcome to Our App{user ? `, ${user.name}` : ''}!</h1>
-      {user && (
-        <button onClick={handleLogout}>Logout</button>
+    <div className={`nav-menu-items ${showLogout ? 'logout-list' : ''}`}>
+      {showLogout && (
+        <li className='nav-text logout-item'>
+          <button onClick={handleLogout}>
+            Logout
+          </button>
+        </li>
       )}
-      {/* Other content of the home page */}
     </div>
   );
-};
-
-export default Home;
+}

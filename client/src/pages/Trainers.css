@@ -1,0 +1,17 @@
+.trainer-container {
+    border: 1px solid #ccc;
+    /* Add a border around the container */
+    padding: 1rem;
+    /* Add padding to create space around the session items */
+    margin-top: 10rem;
+    /* Add margin at the top to separate it from other elements */
+}
+
+.trainer-item {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 1;
+}

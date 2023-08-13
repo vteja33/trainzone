@@ -8,10 +8,15 @@ const userSchema = new Schema({
         type: String,
         unique: true
     },
+    userid: {
+        type: String,
+        unique: true
+    },
     password: String,
     role: String,
-    gender: String
+    gender: String,
 })
+
 
 const UserModel = mongoose.model('User', userSchema);
 

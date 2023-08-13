@@ -11,6 +11,7 @@ export default function Register() {
   const[data, setData] = useState({
     name: '',
     email: '',
+    userid: '',
     password: '',
     role: '',
     gender: '',
@@ -19,10 +20,10 @@ export default function Register() {
 
   const registerUser = async (e) => {
     e.preventDefault()
-    const {name, email, password, role, gender } = data
+    const {name, email, userid, password, role, gender } = data
     try {
       const {data} = await axios.post('/register', {
-        name, email, password, role, gender
+        name, email, userid, password, role, gender
       })
       if(data.error) {
         toast.error(data.error)
@@ -46,6 +47,8 @@ export default function Register() {
         <input type='text' placeholder='enter name...' value={data.name} onChange={(e) => setData({...data, name: e.target.value})}/>
         <label>Email</label>
         <input type='email' placeholder='enter email...' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
+        <label>Username</label>
+        <input type='text' placeholder='enter username...' value={data.userid} onChange={(e) => setData({...data, userid: e.target.value})}/>
         <label>Password</label>
         <input type='password' placeholder='enter password...' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
         <label>Role</label>

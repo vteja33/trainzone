@@ -40,3 +40,19 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  /* Adjust the background color and transparency as needed */
+  z-index: 9999;
+  /* Make sure it's above everything */
+}
+
+
+
+
