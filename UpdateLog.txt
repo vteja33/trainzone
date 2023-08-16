@@ -1,0 +1,29 @@
+TrainZone Commits (Prior to 8/4/2023):
+
+doug-oviedo (Douglas): 
+- created React App components (src folder, package.json, package-lock,json, README)
+- Login.jsx, Register.jsx
+- App.css, App.js edits
+
+vteja33 (Vamshi):
+- package.json edits
+- Navbar.js
+
+
+TRAINZONE COMMITS AFTER 8/423.
+
+vteja33 (Vamshi):
+
+- initialized backend for user authentication using mongodb. 
+- used Controllers, models and Router files to make backend more abstract.
+- initialized video conferencing feature.
+- Created trainer accounts and added the info field for descriptions.
+- Started progress on in app chat feature.
+- Implemented search filters, dashboard and NAVBAR with icons.
+- Used Tailwind to style page components.
+
+Doug-oviedo (Douglas) :
+
+- Styled the front-end pages using CSS and Tailwind.
+- Developed Login, Register pages along with edits to App.css, App.jsx
+- Added code documentation
