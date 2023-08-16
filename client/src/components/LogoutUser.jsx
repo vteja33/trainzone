@@ -10,24 +10,15 @@ export default function LogoutUser({ showLogout, setShowLogout }) {
 
   const handleLogout = async () => {
     try {
-      await axios.get('/logout'); // Assuming your backend handles the logout process
+      await axios.get('/logout'); 
       setUser(null); // Clear the user data
       toast.success('Logout Successful');
-      navigate('/'); // Redirect to the home page or any other desired page
+      navigate('/'); // Redirect to the home page
     } catch (error) {
       console.error(error);
     }
   };
-
-  return (
-    <div className={`nav-menu-items ${showLogout ? 'logout-list' : ''}`}>
-      {showLogout && (
-        <li className='nav-text logout-item'>
-          <button onClick={handleLogout}>
-            Logout
-          </button>
-        </li>
-      )}
-    </div>
-  );
 }
+
+
+

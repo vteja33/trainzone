@@ -25,7 +25,7 @@ export function getUrlParams(
   return new URLSearchParams(urlStr);
 }
 
-export default function App() {
+export default function Room() {
 
     
 
@@ -39,7 +39,13 @@ export default function App() {
       const appID = 1131425668;
       let userID = user.userid
       const serverSecret = 'ca03c7a0ca109548eb207f0b389c0bb1';
-      const kitToken =  ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID,  randomID(5));
+      const kitToken =  ZegoUIKitPrebuilt.generateKitTokenForTest(
+        appID, 
+        serverSecret, 
+        roomID, 
+        userID,  
+        randomID(5)
+      );
 
 
      // Create instance object from Kit Token.

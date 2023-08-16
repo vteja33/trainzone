@@ -4,6 +4,8 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 //import { useNavigate } from 'react-router-dom';
+import './SessionModal.css';
+
 
 
 function randomID(len) {
@@ -66,7 +68,7 @@ const SessionModal = ({ isOpen, onClose, onSubmit }) => {
         sessionInfo,
         sessionTitle,
         sessionType,
-        trainer: user.name,
+        trainer: user.firstName,
         time,
         roomCode: newRoomCode
       });
@@ -121,10 +123,13 @@ const SessionModal = ({ isOpen, onClose, onSubmit }) => {
     contentLabel="Session Modal"
     style={customStyles}
   >
-    <h2>Create Session</h2>
+    <div className='model-content'>
+      <h1>Create Session</h1>
+    </div>
+    
     <form>
       <div className="input-field">
-        <label>Session Title:</label>
+        <label className='label'>Session Title:</label>
         <input
           type="text"
           name="sessionTitle"
@@ -134,7 +139,7 @@ const SessionModal = ({ isOpen, onClose, onSubmit }) => {
       </div>
 
       <div className="input-field">
-        <label>Session Type:</label>
+        <label className='label'>Session Type:</label>
         <select
           value={sessionData.sessionType}
           onChange={handleInputChange}
@@ -143,14 +148,15 @@ const SessionModal = ({ isOpen, onClose, onSubmit }) => {
           <option value="">Select Type</option>
           <option value="Core Workout">Core Workout</option>
           <option value="Yoga">Yoga</option>
-          <option value="CalisthePilates">CalisthePilates</option>
+          <option value="Calisthenics">Calisthenics</option>
+          <option value="Zumba">Zumba</option>
           <option value="Pilates">Pilates</option>
           <option value="Boxing">Boxing</option>
         </select>
       </div>
 
       <div className="input-field">
-        <label>Time:</label>
+        <label className='label'>Time:</label>
         <input
           type="datetime-local"
           name="time"
@@ -160,7 +166,7 @@ const SessionModal = ({ isOpen, onClose, onSubmit }) => {
       </div>
 
       <div className="input-field">
-        <label>Description:</label>
+        <label className='label'>Description:</label>
         <input
           type="text"
           name="sessionInfo"
@@ -171,7 +177,7 @@ const SessionModal = ({ isOpen, onClose, onSubmit }) => {
 
       <div className="button-group">
         <button onClick={handleSubmit}>Create</button>
-        <button onClick={onClose}>Cancel</button>
+        <button className="cancel-button" onClick={onClose}>Cancel</button>
       </div>
     </form>
   </Modal>

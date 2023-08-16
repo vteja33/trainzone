@@ -35,13 +35,16 @@ export default function Login() {
 
 
   return (
-    <div>
-      <form onSubmit={loginUser}>
-        <label>Email</label>
-        <input type='email' placeholder='enter email...' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
-        <label>Password</label>
-        <input type='password' placeholder='enter password...' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
-        <button type='submit'>Login</button>
+    <div className='log'>
+      <form className='auth-form' onSubmit={loginUser}>
+        <label className ='auth-form label'>Email</label>
+        <input type='email'  className=" p-2 block w-full border rounded-md shadow-sm focus:ring focus:ring-opacity-50 focus:border-blue-300" placeholder='' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
+        <label className='auth-form label'>Password</label>
+        <input type='password' className=" p-2 block w-full border rounded-md shadow-sm focus:ring focus:ring-opacity-50 focus:border-blue-300"
+         value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
+        <div className="flex justify-center">
+          <button type='submit' className="bg-yellow-500 rounded-[0.5rem] py-1.5 px-4 font-bold mt-4 mr-4 center">Login</button>
+        </div>
       </form>
     </div>
   )

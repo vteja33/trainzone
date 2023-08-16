@@ -5,6 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import './Sessions.css';
+import * as AiIcons from 'react-icons/ai';
 
 
 
@@ -26,9 +27,14 @@ const Sessions = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   //console.log('User Role:', user?.role);
-
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sessions, setSessions] = useState([]);
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -46,7 +52,7 @@ const Sessions = () => {
   };
 
   const generateRoomCode = () => {
-      // Generate a random room code here, you can use a similar approach to your randomID function
+      
       const randomRoomCode = randomID(7);
       return randomRoomCode;
   };
@@ -70,10 +76,21 @@ const Sessions = () => {
     });
   }, []);
 
+  
+
+  const filteredSessions = sessions.filter((session) => {
+    const lowerCaseSearchQuery = searchTerm.toLowerCase();
+    return (
+      session.sessionTitle.toLowerCase().includes(lowerCaseSearchQuery) ||
+      session.trainer.toLowerCase().includes(lowerCaseSearchQuery) ||
+      session.sessionType.toLowerCase().includes(lowerCaseSearchQuery)
+    );
+  });
+
   const handleCancelSession = (sessionID) => {
     axios.delete(`/sessions/${sessionID}`)
     .then((response) => {
-      // After successful deletion, update the sessions state to remove the deleted session
+      
       setSessions((prevSessions) =>
         prevSessions.filter((session) => session._id !== sessionID)
       );
@@ -107,28 +124,54 @@ const formatTime = (time) => {
   return new Date(time).toLocaleString('en-US', options);
 };
 
+
+
+const toggleSearch = () => {
+
+  setIsSearchVisible(!isSearchVisible);
+
+}
+
+
+  
   return (
     <div>
-      <h1 className='py-1.5 px-10 font-bold text-4xl absolute top-20 center mt-4'>Sessions Page</h1>
+      <div >
+        <button
+          className="search-icon"
+          onClick={toggleSearch}
+        >
+          < AiIcons.AiOutlineSearch/>
+        </button>
+        {isSearchVisible && (
+          <input
+            className="bg-500 rounded-[0.5rem] py-1.5 px-4 font-bold absolute top-20 right-40 mt-4 mr-80"
+            type='text'
+            placeholder='Search Sessions'
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        )}
+      </div>
 
       {user?.role === 'Trainer' && (
         <><button
           onClick={createMeeting}
-          className="bg-orange-500 rounded-[0.5rem] py-1.5 px-4 font-bold absolute top-20 right-40 mt-4 mr-4">
+          className="bg-orange-500 rounded-[0.5rem] py-1.5 px-4 font-bold absolute top-20 right-40 mt-4 mr-40">
           Create Meeting
         </button><button
           onClick={openModal}
-          className="bg-green-500 rounded-[0.5rem] py-1.5 px-4 font-bold absolute top-20 right-0 mt-4 mr-4"
+          className="bg-green-500 rounded-[0.5rem] py-1.5 px-4 font-bold absolute top-20 right-0 mt-4 mr-40"
         >
             Create Session
           </button></>
       )}
 
       <div className='session-container'>
-        {sortedSessions.filter((session) => new Date(session.time) > getCurrentTime())
+        {filteredSessions
+        .filter((session) => new Date(session.time) > getCurrentTime())
         .map((session) => (
-
-        <div key={session._id} className='session-item'> 
+          <div key={session._id} className='session-item'> 
 
           <h1 className='font-bold'>{session.sessionTitle}</h1>
           <p>Description: {session.sessionInfo}</p>
@@ -144,12 +187,19 @@ const formatTime = (time) => {
             Join Meeting
             </button>
             )}
-            <button
+            {user?.role === 'Trainer' &&(
+              <button
               onClick={() => handleCancelSession(session._id)}
               className="cancel-button"
             >
             Cancel
             </button>
+
+            )}
+            
+            
+
+            
         </div>
 
       ))}

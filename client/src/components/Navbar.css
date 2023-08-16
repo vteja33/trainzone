@@ -1,15 +1,25 @@
 .navbar {
-    background-color: #060b26;
+    /* background-color: #060b26; */
     height: 80px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* Stretch the navbar across the viewport */
+    z-index: 4;
+    /* Increase the z-index to place it above the menu */
 }
 
 .menu-bars {
     margin-left: 2rem;
+    justify-content: flex-start;
     font-size: 2rem;
     background: none;
+    z-index: 5;
+    /* Ensure the icon is above the navbar */
 }
 
 .nav-menu {
@@ -19,9 +29,12 @@
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 0;
+    top: 80px;
+    /* Adjust this value to create the desired spacing */
     left: -100%;
     transition: 850ms;
+    z-index: 3;
+    /* Decrease the z-index to place it below the navbar */
 }
 
 .nav-menu.active {
@@ -51,7 +64,7 @@
 }
 
 .nav-text a:hover {
-    background-color: #1a83ff;
+    background-color: #0056b3;
 }
 
 .nav-menu-items {
@@ -71,5 +84,38 @@ span {
     margin-left: 16px;
 }
 
+.logout-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+    margin-top: auto;
+}
 
 
+
+.logout-item button {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.logout-item button:hover {
+    background-color: #0056b3;
+}
+
+.page-title {
+    font-size: 2rem;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    padding: 1rem;
+}

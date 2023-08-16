@@ -3,6 +3,7 @@ const { hashPassword, comparePasswords } = require('../helpers/auth')
 const jwt = require('jsonwebtoken'); 
 
 const User = require('../models/user')
+const axios = require('axios');
 
 
 
@@ -14,15 +15,25 @@ const test = (req, res) => {
 //Register User
 const registerUser = async (req, res) => {
     try {
-        const {name, email, userid, password, role, gender} = req.body;
-        if(!name) {
+        const {firstName, lastName, email, userid, password, role, gender, info} = req.body;
+        if(!firstName) {
             return res.json({
-                error: "Name is required."
+                error: "First Name is required."
+            })
+        };
+        if(!lastName) {
+            return res.json({
+                error: "Last Name is required."
             })
         };
         if(!password || password.length < 8) {
             return res.json ({
                 error: "Password is required and it should be 8 characters long minimum."
+            })
+        };
+        if(!password || userid.length < 6 || userid.length >=12 ) {
+            return res.json ({
+                error: "Username can only be between 6 and 12 characters long."
             })
         };
         //check email
@@ -35,7 +46,7 @@ const registerUser = async (req, res) => {
         const user_exist = await User.findOne({userid})
         if(user_exist) {
             return res.json ({
-                error: "Email is already taken. Try another one."
+                error: "Username is already taken. Try another one."
             })
         };
 
@@ -43,21 +54,22 @@ const registerUser = async (req, res) => {
 
 
         const user = await User.create({
-            name,
+            firstName,
+            lastName,
             email , 
             userid,
             password: hashedPassword,
             role,
             gender,
+            info
             
         })
 
-        return res.json(user)
-        
+        return res.json(user);
     } catch (error) {
-        console.log(error)
+        console.error('Error registering user:', error);
+        return res.status(500).json({ error: 'An internal server error occurred.' });
     }
-
 }
 
 const loginUser = async (req, res) => {
@@ -75,12 +87,14 @@ const loginUser = async (req, res) => {
         if(match) {
             jwt.sign(
                 {
+                    firstName: user.firstName, 
+                    lastName: user.lastName,
                     email: user.email, 
                     id: user._id, 
-                    name: user.name, 
                     role: user.role, 
                     gender: user.gender, 
-                    userid: user.userid
+                    userid: user.userid,
+                    info: user.info
                 }, 
                 process.env.JWT_SECRET, {}, (err, token) => {
                     if(err) throw err

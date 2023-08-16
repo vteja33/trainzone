@@ -3,7 +3,7 @@
     /* Add a border around the container */
     padding: 1rem;
     /* Add padding to create space around the session items */
-    margin-top: 10rem;
+    margin-top: 2rem;
     /* Add margin at the top to separate it from other elements */
 }
 
@@ -14,4 +14,50 @@
     border-radius: 0.5rem;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     margin-top: 1;
+    background-color: #fff;
+}
+
+.message-trainer-button {
+    background-color: #4caf50;
+    /* Green */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 0.5rem;
+}
+
+.message-trainer-button:hover {
+    background-color: #45a049;
+    /* Darkemessage-trainer*/
+}
+
+.trainer-search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    /* Add a margin at the bottom to separate the search bar from the session items */
+}
+
+.search-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    margin-right: 70rem;
+
+}
+
+.search-icon:hover {
+    background-color: #e0e0e0;
 }

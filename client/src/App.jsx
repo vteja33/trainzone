@@ -13,6 +13,9 @@ import Dashboard from './pages/Dashboard';
 import Sessions from './pages/Sessions';
 import Room from './pages/Room';
 import Trainers from './pages/Trainers';
+import ChatRoom from './pages/ChatRoom';
+// import TrainerQuestionnaire from './pages/TrainerQuestionnaire';
+// import UserQuestionnare from './pages/UserQuestionnare';
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
@@ -33,6 +36,9 @@ function App() {
       <Route path='/sessions' element={<Sessions />} />
       <Route path='/trainers' element={<Trainers />} />
       <Route path='/room/:roomID' element={<Room />} />
+      <Route path='/chat' element={<ChatRoom />} />
+      {/* <Route path='/tques' element={<TrainerQuestionnaire />} />
+      <Route path='/uques' element={<UserQuestionnare />} /> */}
 
   
       </Routes>
