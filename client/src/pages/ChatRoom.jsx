@@ -41,36 +41,6 @@ export default function ChatRoom() {
     init();
   }, []);
 
-
-// createChat (trainerId) {
-//     ZIMKitChatListVM.getInstance().initWithConversationID(trainerId, ZIMKitConversationType.ZIMKitConversationTypePeer);
-// };
-
-  
-//   const startChatWithTrainer = (trainerId) => {
-//   try {
-//     const zimKit = new ZIMKitManager();
-//     const token = zimKit.generateKitTokenForTest(
-//       state.appConfig.appID,
-//       state.appConfig.serverSecret,
-//       state.userInfo.userID
-//     );
-
-//     // Initialize ZEGOCLOUD SDK
-//     zimKit.init(state.appConfig.appID);
-//     zimKit.connectUser(state.userInfo, token);
-
-//     // Create a chat session with the trainer's userId
-//     zimKit.createChat(trainerId);
-
-//     console.log('Chat session started with trainer:', trainerId);
-//   } catch (error) {
-//     console.error('Error starting chat:', error);
-//   }
-// };
-
-  
-
   return (
     <div>Welcome back {state.userInfo.userID}
       <Common></Common>
