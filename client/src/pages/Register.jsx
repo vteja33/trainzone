@@ -38,7 +38,7 @@ export default function Register() {
       toast.error(data.error);
     } else {
       setData({});
-      toast.success('Registration Successful. Welcome!');
+      toast.success('Registration Successful. Welcome!'); /*Confirms registration entry */
       navigate('/login');
       
     }
@@ -49,7 +49,8 @@ export default function Register() {
 
 
   
-  
+  /*Register page display. Drop down entries with gender, user type 
+  and extra entry field appears based off drop down of User or Trainer*/
   return (
     <div className='reg'>
       <form className='auth-form' onSubmit={registerUser}>

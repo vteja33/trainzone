@@ -77,7 +77,7 @@ const Sessions = () => {
   }, []);
 
   
-
+/* organizes sessions through search entries */
   const filteredSessions = sessions.filter((session) => {
     const lowerCaseSearchQuery = searchTerm.toLowerCase();
     return (

@@ -14,7 +14,7 @@ const Home = () => {
   }
 
 
-  
+  /* Links to Sessions page */
   return (
     <div>
       <h1 className='font-bold font-size 3xl'>Welcome to TrainZone{user ? `, ${user.firstName}` : ''}!</h1>

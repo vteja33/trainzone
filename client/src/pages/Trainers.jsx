@@ -14,7 +14,7 @@ const Trainers = () => {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-  };
+  }; /* search handler for trainers field*/
 
   useEffect(() => {
     axios.get('/trainers')
@@ -22,7 +22,7 @@ const Trainers = () => {
         setTrainers(response.data);
       })
       .catch(error => {
-        console.error('Error fetching trainers:', error);
+        console.error('Error fetching trainers:', error); /*error message for finding trainers not in the database */
       });
   }, []);
 
@@ -38,7 +38,7 @@ const Trainers = () => {
     if (!str) {
       return '';
     }
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str.charAt(0).toUpperCase() + str.slice(1);  /* capital first letter on string entry*/
   };
 
   const startChatWithTrainer = async (trainerId) => {

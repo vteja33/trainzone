@@ -54,6 +54,7 @@ const UserQuestionnaire = () => {
   };
 
 
+  /* presents multiple questions and answer selections*/
   return (
     <form onSubmit={handleSubmit}>
       <div>

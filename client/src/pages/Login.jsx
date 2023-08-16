@@ -9,7 +9,7 @@ export default function Login() {
   const [data, setData] = useState({
     email: '',
     password: '',
-  })
+  }) /* Sets use state of email and password strings */
   
   const loginUser = async (e) => {
     e.preventDefault()
@@ -24,7 +24,7 @@ export default function Login() {
       }
       else {
         setData({})
-        toast.success('Login Successful. Welcome!')
+        toast.success('Login Successful. Welcome!') /* Login confirmation*/
 
         navigate('/dashboard')
       }
@@ -33,7 +33,7 @@ export default function Login() {
     }
   }
 
-
+/* Login Page Display with placeholder texts in entry boxes*/
   return (
     <div className='log'>
       <form className='auth-form' onSubmit={loginUser}>

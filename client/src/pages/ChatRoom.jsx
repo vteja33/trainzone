@@ -41,6 +41,7 @@ export default function ChatRoom() {
     init();
   }, []);
 
+  /* Displays user's information */
   return (
     <div>Welcome back {state.userInfo.userID}
       <Common></Common>

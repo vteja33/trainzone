@@ -4,7 +4,7 @@ import { UserContext } from '../context/userContext'
 export default function Dashboard() {
     const {user} = useContext(UserContext)
 
-    console.log(user?.firstName)
+    console.log(user?.firstName) /* Marks down user's first name */
   
     return (
     <div>

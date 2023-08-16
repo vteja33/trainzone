@@ -8,7 +8,7 @@ import { UserContext } from '../context/userContext'
 function randomID(len) {
   let result = '';
   if (result) return result;
-  var chars = '12345qwertyuiopasdfgh67890jklmnbvcxzMNBVCZXASDQWERTYHGFUIOLKJP',
+  var chars = '12345qwertyuiopasdfgh67890jklmnbvcxzMNBVCZXASDQWERTYHGFUIOLKJP', /*multiple character entries allowed*/
     maxPos = chars.length,
     i;
   len = len || 5;
@@ -45,7 +45,7 @@ export default function Room() {
         roomID, 
         userID,  
         randomID(5)
-      );
+      ); /* token is created */
 
 
      // Create instance object from Kit Token.

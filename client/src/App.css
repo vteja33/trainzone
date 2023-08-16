@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #060b26;
+    background-color: #060b26; /*Dark blue color*/
     height: 80px;
     display: flex;
     justify-content: center;
@@ -106,7 +106,7 @@ span {
 }
 
 .auth-form input,
-.auth-form select {
+.auth-form select { /*center text alignment*/
     width: 100%;
     padding: 0.5rem;
     align-items: center;
